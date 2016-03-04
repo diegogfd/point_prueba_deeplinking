@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1509" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="miO-ZD-zo3">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="PkE-bM-osq">
+            <objects>
+                <navigationController id="miO-ZD-zo3" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fDI-6d-YYs">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Umv-he-8aH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n2H-wa-JZL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-503" y="338"/>
+        </scene>
+        <!--Realizar pago-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Point_Deeplink_Caller" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Monto" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jrV-YX-CU1">
+                                <rect key="frame" x="20" y="107" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Oxr-BK-8jP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Referencia de pago" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cEy-3W-B0e">
+                                <rect key="frame" x="20" y="152" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MX8-RK-d3V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" placeholder="Installments" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wiC-xC-1cM">
+                                <rect key="frame" x="20" y="240" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="59C-l1-dLf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dvg-IL-MDT">
+                                <rect key="frame" x="242" y="319" width="116" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="116" id="eiU-XF-emz"/>
+                                    <constraint firstAttribute="height" constant="30" id="puK-87-0Lk"/>
+                                </constraints>
+                                <state key="normal" title="Realizar pago"/>
+                                <connections>
+                                    <action selector="didSelectPayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7qD-nW-GTa"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bwK-5G-yJ0">
+                                <rect key="frame" x="20" y="197" width="121" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="121" id="d06-9V-aOk"/>
+                                    <constraint firstAttribute="height" constant="28" id="iTg-6o-aMs"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Debito"/>
+                                    <segment title="Crédito"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="NWE-bI-oke"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jrV-YX-CU1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="43" id="9Ij-ag-ply"/>
+                            <constraint firstItem="bwK-5G-yJ0" firstAttribute="top" secondItem="cEy-3W-B0e" secondAttribute="bottom" constant="15" id="Aha-pf-EJs"/>
+                            <constraint firstAttribute="trailing" secondItem="jrV-YX-CU1" secondAttribute="trailing" constant="20" id="Dsl-Ba-fwo"/>
+                            <constraint firstItem="Dvg-IL-MDT" firstAttribute="top" secondItem="wiC-xC-1cM" secondAttribute="bottom" constant="49" id="Dux-cC-yPz"/>
+                            <constraint firstItem="Dvg-IL-MDT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N4H-Sa-jav"/>
+                            <constraint firstItem="wiC-xC-1cM" firstAttribute="top" secondItem="bwK-5G-yJ0" secondAttribute="bottom" constant="15" id="P4u-ZS-lsK"/>
+                            <constraint firstItem="jrV-YX-CU1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="PgW-qe-7Og"/>
+                            <constraint firstItem="bwK-5G-yJ0" firstAttribute="leading" secondItem="jrV-YX-CU1" secondAttribute="leading" id="X35-fi-g5h"/>
+                            <constraint firstItem="wiC-xC-1cM" firstAttribute="leading" secondItem="jrV-YX-CU1" secondAttribute="leading" id="YkY-4J-Vxo"/>
+                            <constraint firstItem="cEy-3W-B0e" firstAttribute="trailing" secondItem="jrV-YX-CU1" secondAttribute="trailing" id="aLt-m6-N9P"/>
+                            <constraint firstItem="cEy-3W-B0e" firstAttribute="top" secondItem="jrV-YX-CU1" secondAttribute="bottom" constant="15" id="qEN-Cl-Dpa"/>
+                            <constraint firstItem="cEy-3W-B0e" firstAttribute="leading" secondItem="jrV-YX-CU1" secondAttribute="leading" id="w3s-ct-bjX"/>
+                            <constraint firstItem="wiC-xC-1cM" firstAttribute="trailing" secondItem="jrV-YX-CU1" secondAttribute="trailing" id="ylK-eZ-m11"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Realizar pago" id="3EE-L0-gRm"/>
+                    <connections>
+                        <outlet property="amountTextField" destination="jrV-YX-CU1" id="Vq9-US-AmV"/>
+                        <outlet property="debitCreditSegmentedControl" destination="bwK-5G-yJ0" id="0Ai-MO-8NU"/>
+                        <outlet property="installmentsTextField" destination="wiC-xC-1cM" id="BBe-Rf-RQW"/>
+                        <outlet property="paymentReferenceTextField" destination="cEy-3W-B0e" id="jjd-2h-TFm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="280" y="307"/>
+        </scene>
+    </scenes>
+</document>
