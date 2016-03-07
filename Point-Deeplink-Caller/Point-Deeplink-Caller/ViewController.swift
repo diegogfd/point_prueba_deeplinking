@@ -36,8 +36,42 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didSelectPayButton(sender: AnyObject) {
-        if let amount = amountTextField.text, let paymentReference = paymentReferenceTextField.text, let installments = installmentsTextField.text{
-            UIApplication.sharedApplication().openURL(NSURL(string: "mpos://?amount=\(amount)&installments=\(installments)&return_url=\(returnURL)&reference_code=\(paymentReference)&debit_credit=\(paymentType)")!)
+        if let amount = amountTextField.text, let installments = installmentsTextField.text{
+            if amount != "" && installments != ""{
+                if let paymentReference = paymentReferenceTextField.text{
+                    if paymentReference != ""{
+                        if paymentType == "debit"{
+                            let query = "?amount=\(amount)&installments=1&return_url=\(returnURL)&reference_code=\(paymentReference)&debit_credit=\(paymentType)".stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!
+                            let url = NSURL(string: "mpos://" + query)
+                            UIApplication.sharedApplication().openURL(url!)
+                        }else{
+                            let query = "?amount=\(amount)&installments=\(installments)&return_url=\(returnURL)&reference_code=\(paymentReference)&debit_credit=\(paymentType)".stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!
+                            let url = NSURL(string: "mpos://" + query)
+                            UIApplication.sharedApplication().openURL(url!)
+                        }
+                    }else{
+                        openURLWithoutReferenceCode(amount,installments: installments,returnURL: returnURL)
+                    }
+                }else{
+                    openURLWithoutReferenceCode(amount,installments: installments,returnURL: returnURL)
+                }
+            }else{
+                UIAlertView(title: "Error", message: "Por favor complete todos los campos", delegate: nil, cancelButtonTitle: "OK").show()
+            }
+        }else{
+            UIAlertView(title: "Error", message: "Por favor complete todos los campos", delegate: nil, cancelButtonTitle: "OK").show()
+        }
+    }
+    
+    func openURLWithoutReferenceCode(amount : String, installments: String, returnURL : String){
+        if paymentType == "debit"{
+            let query = "?amount=\(amount)&installments=1&return_url=\(returnURL)&debit_credit=\(paymentType)".stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!
+            let url = NSURL(string: "mpos://" + query)
+            UIApplication.sharedApplication().openURL(url!)
+        }else{
+            let query = "?amount=\(amount)&installments=\(installments)&return_url=\(returnURL)&debit_credit=\(paymentType)".stringByAddingPercentEncodingWithAllowedCharacters(.URLQueryAllowedCharacterSet())!
+            let url = NSURL(string: "mpos://" + query)
+            UIApplication.sharedApplication().openURL(url!)
         }
     }
 
